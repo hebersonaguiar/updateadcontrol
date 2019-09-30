@@ -93,7 +93,7 @@ def login():
 		except Exception as error_message:
 			return redirect(url_for('login'))
 
-	return render_template('/login/login.html')
+	return render_template('login.html')
 
 @app.route('/usuarios')
 def usuarios():
