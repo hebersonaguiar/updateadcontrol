@@ -13,7 +13,6 @@ WORKDIR /opt
 
 ADD app.py /opt/
 ADD requirements.txt /opt
-ADD assets /opt/assets
 ADD static /opt/static
 ADD templates /opt/templates
 
