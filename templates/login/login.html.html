@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>login</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  <link rel="stylesheet" href="../../assets/styles/dsgov-base.min.css">
+  <link rel="stylesheet" href="../../assets/styles/dsgov-components.min.css">
+  <link rel="stylesheet" href="../../assets/styles/dsgov-templates.min.css">
+</head>
+
+<body>
+  <!-- Atalhos para conteúdo -->
+  <ul id="skip-menu" class="skip-menu">
+    <li><a accesskey="1" href="#content">Ir para o conteúdo</a></li>
+    <li><a accesskey="2" href="#navigation">Ir para o menu</a></li>
+    <li><a accesskey="3" href="#footer-brasil">Ir para o rodapé</a></li>
+  </ul>
+
+  <!-- Barra de governo -->
+  <div id="barra-brasil" style="background:#7F7F7F; height: 20px; padding:0 0 0 10px;display:block;">
+    <ul id="menu-barra-temp" style="list-style:none;">
+      <li style="display:inline; float:left;padding-right:10px; margin-right:10px; border-right:1px solid #EDEDED">
+        <a href="http://brasil.gov.br" style="font-family:sans,sans-serif; text-decoration:none; color:white;">Portal do
+          Governo Brasileiro</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Wrapper -->
+  <div class="page-wrapper container-fluid">
+    <div class="page-background row">
+      <div class="container">
+        <div class="row">
+          <!-- Lado esquerdo -->
+          <div class="col-sm-4 col-lg-5">
+            <div class="row justify-content-end">
+              <div class="col-sm-11 col-md-9 col-lg-7 col-xl-6 pt-sm-8">
+                <!-- Logo -->
+                <a id="nav-logo" class="logo d-none d-sm-flex py-8" href="javascript:void(0)">
+                  <img src="../../assets/images/logo-color.png" alt="Governo do Brasil" class="logo-image">
+                </a>
+                <!-- Descrição da página -->
+                <p class="nav-description d-none d-md-block pr-3 pb-3">
+                  Este Login garante a identificação de cada cidadão
+                  que acessa os serviços digitais do governo.
+                </p>
+                <!-- Menu de navegação -->
+                <nav id="navigation" class="page-navigation d-none d-sm-block mr-n1 mr-lg-n2 mr-xl-n3">
+                  <ul class="br-tabs is-vertical">
+                    <li class="item is-active">
+                      <a href="javascript:void(0)">
+                        <span class="name">Entrar com CPF</span>
+                      </a>
+                    </li>
+                    <li class="item">
+                      <a href="javascript:void(0)">
+                        <img class="icon" src="../../assets/images/certificado-digital.png" alt="Certificado Digital">
+                        <span class="name">Entrar com Certificado Digital</span>
+                      </a>
+                    </li>
+                    <li class="item">
+                      <a href="javascript:void(0)">
+                        <img class="icon" src="../../assets/images/neoid.png" alt="NeoID">
+                        <span class="name">Entrar com NeoID</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+          <!-- Lado direito -->
+          <div class="col bg-white">
+            <!-- Cabeçalho da página -->
+            <header id="header" class="page-header pl-sm-10 pr-sm-3 pt-1 pt-sm-3">
+              <!-- Acessibilidade -->
+              <div class="accessibility">
+                <a id="contrast" href="javascript:void(0)" accesskey="6">
+                  <span class="accessibility-icon">
+                    <img src="../../assets/images/alto-contraste.png" alt="Alto contraste">
+                  </span>
+                  <span class="accessibility-text d-none d-sm-inline">
+                    <span class="">Alto Contraste</span>
+                  </span>
+                </a>
+                <a id="vlibras" href="http://www.vlibras.gov.br/">
+                  <span class="accessibility-icon">
+                    <img src="../../assets/images/vlibras.png" alt="VLibras">
+                  </span>
+                  <span class="accessibility-text d-none d-sm-inline">
+                    <span class="">VLibras</span>
+                  </span>
+                </a>
+              </div>
+              <!-- Logo -->
+              <a id="logo" class="logo d-sm-none" href="javascript:void(0)">
+                <img src="../../assets/images/logo-color.png" alt="Governo do Brasil" class="logo-image">
+              </a>
+            </header>
+            <!-- Conteúdo principal -->
+            <main id="content" class="page-content pl-sm-10 pt-sm-8">
+              <!-- Cabeçalho do conteúdo principal -->
+              <header class="content-header pb-5 pb-sm-8 pt-3">
+                <h1 class="content-title">Acesse sua conta</h1>
+              </header>
+
+              <div class="row">
+                <div class="col-sm-9 col-md-7 col-lg-8 col-xl-7">
+                  <!-- Área de preenchimento do usuário -->
+                  <section class="br-form">
+                    <!-- Informar CPF -->
+                    <div class="field">
+                      <div class="input">
+                        <label for="cpf">CPF</label>
+                        <input type="text" id="cpf" placeholder="Digite somente números">
+                      </div>
+                    </div>
+                    <!-- Informar a senha -->
+                    <div class="field">
+                      <div class="br-input is-action">
+                        <label for="password">Senha</label>
+                        <input type="password" id="password" placeholder="Digite sua senha de 8 a 11 dígitos">
+                        <button class="action" onclick="toggleInputAction(this, 'is-action')">
+                          <span class="sr-only">Mostrar senha</span>
+                          <i class="fas fa-eye"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <!-- Facilidades de senha -->
+                    <div class="field row justify-content-between mb-sm-6">
+                      <div class="col-auto">
+                        <a class="br-button is-tertiary" href="javascript:void(0)">Esqueceu a Senha?</a>
+                      </div>
+                      <div class="col-auto">
+                        <div class="check">
+                          <input type="checkbox" id="manter-logado">
+                          <label for="manter-logado">Manter logado</label>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Botões de ação -->
+                    <div class="actions justify-content-center">
+                      <button class="button is-primary">Entrar</button>
+                      <button class="button is-secondary">Cadastrar</button>
+                    </div>
+                  </section>
+                  <!-- Navegação para smartphones -->
+                  <nav class="content-navigation d-sm-none pb-5 pt-1">
+                    <div class="row">
+                      <div class="col">
+                        <div class="media">
+                          <div class="media-left align-self-center">
+                            <img src="../../assets/images/certificado-digital.png" alt="Certificado Digital">
+                          </div>
+                          <div class="media-content">
+                            <a href="javascript:void(0)">Entrar com Certificado Digital</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="media">
+                          <div class="media-left align-self-center">
+                            <img src="../../assets/images/neoid.png" alt="NeoID">
+                          </div>
+                          <div class="media-content">
+                            <a href="javascript:void(0)">Entrar com NeoID</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </nav>
+                  <!-- Outras opções de login -->
+                  <aside class="content-aside pt-sm-3 pb-3 pb-sm-8">
+                    <div class="br-login-social">
+                      <div class="br-divider">
+                        <span class="content">Ou</span>
+                      </div>
+                      <button class="br-button is-social-media is-facebook" type="button">
+                        <i class="fab fa-facebook-f fa-lg"></i>
+                      </button>
+                      <button class="br-button is-social-media is-twitter" type="button">
+                        <i class="fab fa-twitter fa-lg"></i>
+                      </button>
+                      <button class="br-button is-social-media" type="button">
+                        <img src="../../assets/images/google.png" alt="Google">
+                      </button>
+                    </div>
+                  </aside>
+                </div>
+              </div>
+            </main>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rodapé de governo -->
+  <div id="footer-brasil" class="page-footer mt-5 mt-sm-0"></div>
+
+  <!-- Script da barra de governo -->
+  <script defer="defer" src="//barra.brasil.gov.br/barra_2.0.js" type="text/javascript"></script>
+  <script src="../../components/input/input-password.js"></script>
+
+</body>
+
+</html>
