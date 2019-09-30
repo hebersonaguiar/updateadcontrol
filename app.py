@@ -59,7 +59,7 @@ def conn():
 
 # REGRAS DE AUTENTICAÇÃO PARA PÁGINA DE LOGIN
 @app.route('/', methods=['GET','POST'])
-def login():
+def index():
 
 	if request.method == 'POST':
 		session.pop('username', None)
@@ -86,14 +86,14 @@ def login():
 				session['username'] = request.form['username']
 				return redirect(url_for('usuarios'))
 			else:
-				return redirect(url_for('login'))
+				return redirect(url_for('index'))
 
 			return jsonify({'Conn': cAd}), 200
 
 		except Exception as error_message:
-			return redirect(url_for('login'))
+			return redirect(url_for('index'))
 
-	return render_template('login.html')
+	return render_template('index.html')
 
 @app.route('/usuarios')
 def usuarios():
