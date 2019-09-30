@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>login</title>
+  <title>Login - Controle de Usuários</title>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
     integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   <link rel="stylesheet" href="/static/css/dsgov-base.min.css">
@@ -54,10 +54,10 @@
                   <ul class="br-tabs is-vertical">
                     <li class="item is-active">
                       <a href="javascript:void(0)">
-                        <span class="name">Entrar com CPF</span>
+                        <span class="name">Entrar com Usuário de Rede</span>
                       </a>
                     </li>
-                    <li class="item">
+<!--                     <li class="item">
                       <a href="javascript:void(0)">
                         <img class="icon" src="/static/images/certificado-digital.png" alt="Certificado Digital">
                         <span class="name">Entrar com Certificado Digital</span>
@@ -68,7 +68,7 @@
                         <img class="icon" src="/static/images/neoid.png" alt="NeoID">
                         <span class="name">Entrar com NeoID</span>
                       </a>
-                    </li>
+                    </li> -->
                   </ul>
                 </nav>
               </div>
@@ -106,7 +106,7 @@
             <main id="content" class="page-content pl-sm-10 pt-sm-8">
               <!-- Cabeçalho do conteúdo principal -->
               <header class="content-header pb-5 pb-sm-8 pt-3">
-                <h1 class="content-title">Acesse sua conta</h1>
+                <h1 class="content-title">Controle de Usuários - MDH</h1>
               </header>
 
               <div class="row">
@@ -116,15 +116,15 @@
                     <!-- Informar CPF -->
                     <div class="field">
                       <div class="input">
-                        <label for="cpf">CPF</label>
-                        <input type="text" id="cpf" placeholder="Digite somente números">
+                        <label for="cpf">Usuário de Rede</label>
+                        <input type="text" id="cpf" placeholder="Usuário de rede">
                       </div>
                     </div>
                     <!-- Informar a senha -->
                     <div class="field">
                       <div class="br-input is-action">
                         <label for="password">Senha</label>
-                        <input type="password" id="password" placeholder="Digite sua senha de 8 a 11 dígitos">
+                        <input type="password" id="password" placeholder="Senha de rede">
                         <button class="action" onclick="toggleInputAction(this, 'is-action')">
                           <span class="sr-only">Mostrar senha</span>
                           <i class="fas fa-eye"></i>
@@ -133,7 +133,7 @@
                     </div>
                     <!-- Facilidades de senha -->
                     <div class="field row justify-content-between mb-sm-6">
-                      <div class="col-auto">
+   <!--                    <div class="col-auto">
                         <a class="br-button is-tertiary" href="javascript:void(0)">Esqueceu a Senha?</a>
                       </div>
                       <div class="col-auto">
@@ -141,16 +141,16 @@
                           <input type="checkbox" id="manter-logado">
                           <label for="manter-logado">Manter logado</label>
                         </div>
-                      </div>
+                      </div> -->
                     </div>
                     <!-- Botões de ação -->
                     <div class="actions justify-content-center">
                       <button class="button is-primary">Entrar</button>
-                      <button class="button is-secondary">Cadastrar</button>
+                      <!-- <button class="button is-secondary">Cadastrar</button> -->
                     </div>
                   </section>
                   <!-- Navegação para smartphones -->
-                  <nav class="content-navigation d-sm-none pb-5 pt-1">
+<!--                   <nav class="content-navigation d-sm-none pb-5 pt-1">
                     <div class="row">
                       <div class="col">
                         <div class="media">
@@ -173,9 +173,9 @@
                         </div>
                       </div>
                     </div>
-                  </nav>
+                  </nav> -->
                   <!-- Outras opções de login -->
-                  <aside class="content-aside pt-sm-3 pb-3 pb-sm-8">
+<!--                   <aside class="content-aside pt-sm-3 pb-3 pb-sm-8">
                     <div class="br-login-social">
                       <div class="br-divider">
                         <span class="content">Ou</span>
@@ -190,7 +190,7 @@
                         <img src="/static/images/google.png" alt="Google">
                       </button>
                     </div>
-                  </aside>
+                  </aside> -->
                 </div>
               </div>
             </main>
