@@ -14,6 +14,7 @@ WORKDIR /opt
 ADD app.py /opt/
 ADD requirements.txt /opt
 ADD static /opt/static
+ADD assets /opt/assets
 ADD templates /opt/templates
 
 COPY docker-entrypoint.sh /entrypoint.sh
