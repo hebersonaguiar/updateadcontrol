@@ -59,7 +59,7 @@ def conn():
 
 # REGRAS DE AUTENTICAÇÃO PARA PÁGINA DE LOGIN
 @app.route('/', methods=['GET','POST'])
-def index():
+def login():
 
 	if request.method == 'POST':
 		session.pop('username', None)
