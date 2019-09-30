@@ -86,14 +86,14 @@ def login():
 				session['username'] = request.form['username']
 				return redirect(url_for('usuarios'))
 			else:
-				return redirect(url_for('login/login'))
+				return redirect(url_for('login'))
 
 			return jsonify({'Conn': cAd}), 200
 
 		except Exception as error_message:
-			return redirect(url_for('login/login'))
+			return redirect(url_for('login'))
 
-	return render_template('login/login.html')
+	return render_template('/login/login.html')
 
 @app.route('/usuarios')
 def usuarios():
