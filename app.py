@@ -69,6 +69,7 @@ def index():
 		domain_name = 'mdh.gov.br'
 		domain      = domain_name.split('.')
 		connect     = conn()
+		print(usernameForm)
 
 		try:
 			connect.search('dc={},dc={},dc={}'.format(domain[0], domain[1], domain[2]), '(sAMAccountName={})'.format(usernameForm), attributes = [ 'cn' ], search_scope=SUBTREE )
