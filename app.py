@@ -66,10 +66,10 @@ def index():
 		session.pop('username', None)
 
 		usernameForm = request.form['username'] 
+		print(usernameForm)
 		domain_name = 'mdh.gov.br'
 		domain      = domain_name.split('.')
 		connect     = conn()
-		print(usernameForm)
 
 		try:
 			connect.search('dc={},dc={},dc={}'.format(domain[0], domain[1], domain[2]), '(sAMAccountName={})'.format(usernameForm), attributes = [ 'cn' ], search_scope=SUBTREE )
@@ -77,10 +77,10 @@ def index():
 			cn = str(obj)
 
 			passwordForm = request.form['password']
+			print(passwordForm)
 			serverAd = 'adserver'
 			# userNameConn = 'CN={},OU=Usuarios,OU=CGTI,OU=MME,DC=mme,DC=gov,DC=br'.format(cn)
 			userNameConn = 'CN={},OU=ADM,OU=N3,OU=HEPTA,DC=mdh,DC=gov,DC=br'.format(cn)
-			print(userNameConn)
 			passwordAdConn = passwordForm
 			serverAdConn      = Server(serverAd, get_info=ALL)
 			connAd        = Connection(serverAdConn, user=userNameConn, password=passwordAdConn)
@@ -103,12 +103,14 @@ def index():
 def usuarios():
 	if g.username:
 		try:
-			cur = mysql.connection.cursor()
-			cur.execute("SELECT * FROM users")
-			data = cur.fetchall()
-			cur.close()
+			# cur = mysql.connection.cursor()
+			# cur.execute("SELECT * FROM users")
+			# data = cur.fetchall()
+			# cur.close()
 
-			return render_template('usuarios.html', users=data)
+			return render_template('usuarios.html')
+
+			# return render_template('usuarios.html', users=data)
 
 		except Exception as e:
 			return redirect(url_for('index'))
