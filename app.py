@@ -66,7 +66,7 @@ def index():
 		session.pop('username', None)
 
 		usernameForm = request.form['username'] 
-		domain_name = 'mme.gov.br'
+		domain_name = 'mdh.gov.br'
 		domain      = domain_name.split('.')
 		connect     = conn()
 
@@ -77,7 +77,9 @@ def index():
 
 			passwordForm = request.form['password']
 			serverAd = 'adserver'
-			userNameConn = 'CN={},OU=Usuarios,OU=CGTI,OU=MME,DC=mme,DC=gov,DC=br'.format(cn)
+			# userNameConn = 'CN={},OU=Usuarios,OU=CGTI,OU=MME,DC=mme,DC=gov,DC=br'.format(cn)
+			userNameConn = 'CN={},OU=Users,DC=mdh,DC=gov,DC=br'.format(cn)
+			print(userNameConn)
 			passwordAdConn = passwordForm
 			serverAdConn      = Server(serverAd, get_info=ALL)
 			connAd        = Connection(serverAdConn, user=userNameConn, password=passwordAdConn)
