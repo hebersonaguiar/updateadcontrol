@@ -50,7 +50,8 @@ mysql = MySQL(app)
 # CONEXÃO COM O AD
 def conn():
     server_name = 'adserver'
-    user_name   = 'CN=usersvc,OU=Usuarios,OU=CGTI,OU=MME,DC=mme,DC=gov,DC=br'
+    user_name   = 'CN=usersvc,OU=Users,DC=mdh,DC=gov,DC=br'
+    # user_name   = 'CN=usersvc,OU=Usuarios,OU=CGTI,OU=MME,DC=mme,DC=gov,DC=br'
     password    = 'passsvc'
     server      = Server(server_name, get_info=ALL)
     conn        = Connection(server, user=user_name, password=password)
