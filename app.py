@@ -50,7 +50,7 @@ mysql = MySQL(app)
 # CONEXÃO COM O AD
 def conn():
     server_name = 'adserver'
-    user_name   = 'CN=usersvc,OU=Users,DC=mdh,DC=gov,DC=br'
+    user_name   = 'CN=usersvc,OU=Contas de Servico,DC=mdh,DC=gov,DC=br'
     # user_name   = 'CN=usersvc,OU=Usuarios,OU=CGTI,OU=MME,DC=mme,DC=gov,DC=br'
     password    = 'passsvc'
     server      = Server(server_name, get_info=ALL)
@@ -79,7 +79,7 @@ def index():
 			passwordForm = request.form['password']
 			serverAd = 'adserver'
 			# userNameConn = 'CN={},OU=Usuarios,OU=CGTI,OU=MME,DC=mme,DC=gov,DC=br'.format(cn)
-			userNameConn = 'CN={},OU=Users,DC=mdh,DC=gov,DC=br'.format(cn)
+			userNameConn = 'CN={},OU=ADM,OU=N3,OU=HEPTA,DC=mdh,DC=gov,DC=br'.format(cn)
 			print(userNameConn)
 			passwordAdConn = passwordForm
 			serverAdConn      = Server(serverAd, get_info=ALL)
