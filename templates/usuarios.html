@@ -11,10 +11,6 @@
   <link rel="stylesheet" href="/static/css/dsgov-base-in.min.css">
   <link rel="stylesheet" href="/static/css/dsgov-components-in.min.css">
   <link rel="stylesheet" href="/static/css/dsgov-templates-in.min.css">
-<!--   <link rel="stylesheet" href="/static/css/dsgov-base.min.css">
-  <link rel="stylesheet" href="/static/css/dsgov-components.min.css">
-  <link rel="stylesheet" href="/static/css/dsgov-templates.min.css"> -->
-</head>
 
 <body class="template-system">
     <!-- Atalhos para conteúdo -->
@@ -48,8 +44,8 @@
         <div class="header-bar">
           <!-- Logo -->
           <div class="logo">
-            <span class="description">Assinatura do Órgão</span>
-            <a href="" id="logo" class="name">Nome do Órgão</a>
+            <span class="description">MINISTÉRIO DA</span>
+            <a href="" id="logo" class="name">Mulher, da Família e dos Direitos Humanos</a>
           </div>
           <!-- Links rápidos -->
           <div class="quicklinks">
@@ -65,7 +61,7 @@
             </a>
           </div>
           <!-- Busca geral -->
-          <div class="search">
+          <div style="display: none;" class="search">
             <div class="field">
               <label for="search" class="sr-only">Autocomplete</label>
               <input id="search" type="search" placeholder="O que você procura?">
@@ -82,7 +78,7 @@
           <!-- Barra do usuário -->
           <div class="user-bar">
             <!-- Configurações do usuário -->
-            <div class="configs dropdown">
+            <div style="display: none;" class="configs dropdown">
               <button class="trigger" type="button">
                 <!-- Avatar do usuário -->
                 <div class="avatar">
@@ -113,7 +109,7 @@
               </div>
             </div>
             <!-- Sistemas favoritos do usuário -->
-            <div class="bookmarks dropdown">
+            <div style="display: none;" class="bookmarks dropdown">
               <button class="trigger" type="button">
                 <i class="fas fa-th-large"></i>
               </button>
@@ -190,8 +186,9 @@
             <button class="logout" type="button">Sair</button>
           </div>
           <!-- Menu sanduiche -->
-          <button class="menu-hamburger" type="button">
-            <i class="fa fa-bars"></i>
+          <button style="display: none;" class="menu-hamburger" type="button">
+            <!-- <i class="fa fa-bars"></i> -->
+            <a id="logout" href="/logout"></a>
           </button>
         </div>
       </div>
@@ -337,13 +334,13 @@
             <div class="col">
               <ul class="br-breadcrumb">
                 <li class="home">
-                  <a href="">
+                  <a href="/logout">
                     <span class="sr-only">Página inicial</span>
                     <i class="fas fa-home"></i>
                   </a>
                 </li>
-                <li><a href="">Tela anterior</a></li>
-                <li class="is-active"><a href="">Tela atual</a></li>
+                <li><a href="/logout">Login</a></li>
+                <li class="is-active"><a href="">Controle de Usuários</a></li>
               </ul>
             </div>
             <!-- Timeout -->
@@ -361,33 +358,33 @@
       <!-- Conteúdo principal -->
       <main id="content" class="page-content">
         <div class="container-fluid">
-          <h1 class="main-title">Título da página</h1>
-          <p>Conteúdo principal</p>
+          <h1 class="main-title">Controle de Usuários</h1>
+          <!-- <p>Conteúdo principal</p> -->
           <!-- Voltar ao topo -->
           <div class="text-right">
             <hr>
-            <button class="br-button is-go-top" type="button">
+<!--             <button class="br-button is-go-top" type="button">
               Voltar ao topo
               <span class="br-button is-circle is-primary">
                 <i class="fas fa-chevron-up"></i>
               </span>
-            </button>
+            </button> -->
             <hr>
           </div>
           <!-- Lincença e reportar erro -->
           <div class="row">
             <!-- Licença -->
-            <div class="col-sm">
+<!--             <div class="col-sm">
               <p class="license">
                 Versão do sistema
               </p>
-            </div>
+            </div> -->
             <!-- Reportar erro -->
-            <div class="col-sm-auto">
+<!--             <div class="col-sm-auto">
               <p class="report-error">
                 <a href="" class="text-uppercase">Reportar erro</a>
               </p>
-            </div>
+            </div> -->
           </div>
         </div>
       </main>
