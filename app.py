@@ -51,7 +51,6 @@ mysql = MySQL(app)
 def conn():
     server_name = 'adserver'
     user_name   = 'CN=usersvc,OU=Contas de Servico,DC=mdh,DC=gov,DC=br'
-    # user_name   = 'CN=usersvc,OU=Usuarios,OU=CGTI,OU=MME,DC=mme,DC=gov,DC=br'
     password    = 'passsvc'
     server      = Server(server_name, get_info=ALL)
     conn        = Connection(server, user=user_name, password=password)
@@ -65,8 +64,7 @@ def index():
 	if request.method == 'POST':
 		session.pop('username', None)
 
-		usernameForm = request.form['username'] 
-		print(usernameForm)
+		usernameForm = request.form['username']
 		domain_name = 'mdh.gov.br'
 		domain      = domain_name.split('.')
 		connect     = conn()
@@ -77,9 +75,7 @@ def index():
 			cn = str(obj)
 
 			passwordForm = request.form['password']
-			print(passwordForm)
 			serverAd = 'adserver'
-			# userNameConn = 'CN={},OU=Usuarios,OU=CGTI,OU=MME,DC=mme,DC=gov,DC=br'.format(cn)
 			userNameConn = 'CN={},OU=ADM,OU=N3,OU=HEPTA,DC=mdh,DC=gov,DC=br'.format(cn)
 			passwordAdConn = passwordForm
 			serverAdConn      = Server(serverAd, get_info=ALL)
@@ -103,14 +99,14 @@ def index():
 def usuarios():
 	if g.username:
 		try:
-			# cur = mysql.connection.cursor()
-			# cur.execute("SELECT * FROM users")
-			# data = cur.fetchall()
-			# cur.close()
+			cur = mysql.connection.cursor()
+			cur.execute("SELECT * FROM users")
+			data = cur.fetchall()
+			cur.close()
 
-			return render_template('usuarios.html')
+			# return render_template('usuarios.html')
 
-			# return render_template('usuarios.html', users=data)
+			return render_template('usuarios.html', users=data)
 
 		except Exception as e:
 			return redirect(url_for('index'))
