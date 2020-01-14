@@ -186,6 +186,9 @@
               </div>
             </div>
             <!-- Logout -->
+             {% for o in dataname %}
+             <h1 id="welcome" >Bem Vindo, {{ o.displayName }} !</h1>
+             {% endfor %}
             <button class="logout" type="button"><a style="color: #FFF" id="logout" href="/logout">Sair</a></button>
           </div>
           <!-- Menu sanduiche -->
