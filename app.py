@@ -104,9 +104,18 @@ def usuarios():
 			data = cur.fetchall()
 			cur.close()
 
-			# return render_template('usuarios.html')
+			user = g.username
 
-			return render_template('usuarios.html', users=data)
+			domain_name = 'mdh.gov.br'
+			domain      = domain_name.split('.')
+			connect     = conn()
+
+			connect.search('dc={},dc={},dc={}'.format(domain[0], domain[1], domain[2]), '(sAMAccountName={})'.format(user), attributes = [ 'sAMAccountName', 'distinguishedName', 'displayName'], search_scope=SUBTREE )
+
+			displayNameObj  = connect.entries[0].displayName.value
+			displayName = str(displayNameObj)
+
+			return render_template('usuarios.html', users=data, dataname=[{'displayName': displayName}])
 
 		except Exception as e:
 			return redirect(url_for('index'))
