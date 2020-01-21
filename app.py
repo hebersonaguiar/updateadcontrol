@@ -249,7 +249,7 @@ def user():
 
 	login = str(request.json.get('login', None))
 
-	domain_name = 'mme.gov.br'
+	domain_name = 'mdh.gov.br'
 	domain      = domain_name.split('.')
 	connect     = conn()
 
