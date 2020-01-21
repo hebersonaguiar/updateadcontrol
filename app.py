@@ -165,7 +165,7 @@ def insertTask(login, vinculo, cargo, departamento, sala, ramal, created_at):
 @app.route('/delete/<string:id_data>', methods=['POST', 'GET'])
 def delete(id_data):
 
-	domain_name = 'mme.gov.br'
+	domain_name = 'mdh.gov.br'
 	domain      = domain_name.split('.')
 	connect     = conn()
 
