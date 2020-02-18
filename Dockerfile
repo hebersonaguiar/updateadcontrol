@@ -3,11 +3,12 @@ FROM python:3.4.9
 ENV TZ=America/Sao_Paulo
 
 RUN apt-get update -y ; \
-	    apt-get install -y python-dev libldap2-dev libsasl2-dev libssl-dev rabbitmq-server apt-utils tzdata ntp ntpdate
+	    apt-get install -y python-dev libldap2-dev libsasl2-dev libssl-dev rabbitmq-server apt-utils
+	#tzdata ntp ntpdate
 
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+#RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN dpkg-reconfigure -f noninteractive tzdata 
+#RUN dpkg-reconfigure -f noninteractive tzdata 
 
 WORKDIR /opt
 
