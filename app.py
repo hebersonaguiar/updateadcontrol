@@ -129,25 +129,26 @@ def insert():
 	login = str(request.json.get('login', None))
 	vinculo = str(request.json.get('vinculo', None))
 	cargo = str(request.json.get('cargo', None))
-	departamento = str(request.json.get('departamento', None))
+	siape = str(request.json.get('siape', None))
+	cpf = str(request.json.get('cpf', None))
 	sala = str(request.json.get('sala', None))
 	ramal = str(request.json.get('ramal', None))
 	created_at = str(request.json.get('created_at', None))
 
-	insertTask.delay(login, vinculo, cargo, departamento, sala, ramal, created_at)
+	insertTask.delay(login, vinculo, cargo, siape, cpf, sala, ramal, created_at)
 
 	return 'Celery Executado'
 
 
 
 @celery.task(name='app.insertTask')
-def insertTask(login, vinculo, cargo, departamento, sala, ramal, created_at):
+def insertTask(login, vinculo, cargo, siape, cpf, sala, ramal, created_at):
 	# if request.method == 'POST':
 		# flash("Data Inserted Sucessfully")
 
 	try:
 		cur = mysql.connection.cursor()
-		cur.execute("INSERT INTO users (login, vinculo, cargo, departamento, sala, ramal, created_at) VALUES (%s, %s, %s, %s, %s, %s, %s)", (login, vinculo, cargo, departamento, sala, ramal, created_at))
+		cur.execute("INSERT INTO users (login, vinculo, cargo, siape, cpf, sala, ramal, created_at) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)", (login, vinculo, cargo, siape, cpf, sala, ramal, created_at))
 		mysql.connection.commit()
 
 		#return jsonify({'login': login}), 200
@@ -207,7 +208,7 @@ def download():
         w = csv.writer(data, delimiter=';')
 
         # write header
-        w.writerow(('Id', 'Login', 'Vinculo', 'Cargo', 'Departamento', 'Sala', 'Ramal', 'Atualizado Em'))
+        w.writerow(('Id', 'Login', 'Vinculo', 'Cargo', 'Siape', 'Cpf', 'Sala', 'Ramal', 'Atualizado Em'))
         yield data.getvalue()
         data.seek(0)
         data.truncate(0)
@@ -228,7 +229,9 @@ def download():
                 item[4],
                 item[5],
                 item[6],
-                item[7].isoformat()  # format datetime as string
+				item[7],
+                item[8],
+                item[9].isoformat()  # format datetime as string
             ))
             yield data.getvalue()
             data.seek(0)

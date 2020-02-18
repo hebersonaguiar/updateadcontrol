@@ -387,7 +387,8 @@
                            <th>Login</th>
                            <th>Vinculo</th>
                            <th>Cargo</th>
-                           <th>Departamento</th>
+                           <th>Siape</th>
+                           <th>Cpf</th>
                            <th>Sala</th>
                            <th>Ramal</th>
                            <th>Data</th>
@@ -405,6 +406,8 @@
                            <td>{{row.5}}</td>
                            <td>{{row.6}}</td>
                            <td>{{row.7}}</td>
+                           <td>{{row.8}}</td>
+                           <td>{{row.9}}</td>
                            <td>
                               <!-- <a href="" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#edit-modal">Edit</a> -->
                               <a style="text-decoration: none;" href="/delete/{{row.0}}" class="btn btn-danger btn-xs" onclick="return confirm('Deseja deletar?')">Delete</a>
@@ -414,15 +417,17 @@
                      </tbody>
                      <tfoot>
                         <tr>
-                           <th>Id</th>
-                           <th>Login</th>
-                           <th>Vinculo</th>
-                           <th>Cargo</th>
-                           <th>Departamento</th>
-                           <th>Sala</th>
-                           <th>Ramal</th>
-                           <th>Data</th>
-                           <th>Action</th>
+                          <th>Id</th>
+                          <th>Login</th>
+                          <th>Vinculo</th>
+                          <th>Cargo</th>
+                          <th>Siape</th>
+                          <th>Cpf</th>
+                          <th>Sala</th>
+                          <th>Ramal</th>
+                          <th>Data</th>
+                          <th>Action</th>                       
+                        </tr>
                      </tfoot>
                   </table>
                   <a style="float: left; text-decoration: none;"  href="/download" class="btn btn-success btn-xs">Export In CSV</a> 
