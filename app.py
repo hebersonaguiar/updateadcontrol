@@ -147,6 +147,8 @@ def insertTask(login, vinculo, cargo, siape, cpf, sala, ramal, created_at):
 		# flash("Data Inserted Sucessfully")
 
 	try:
+		if siape == "<not set>":
+			siape = "Não possui"
 		cur = mysql.connection.cursor()
 		cur.execute("INSERT INTO users (login, vinculo, cargo, siape, cpf, sala, ramal, created_at) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)", (login, vinculo, cargo, siape, cpf, sala, ramal, created_at))
 		mysql.connection.commit()
