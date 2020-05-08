@@ -133,7 +133,7 @@ def insert():
 	cpf = str(request.json.get('cpf', None))
 	sala = str(request.json.get('sala', None))
 	ramal = str(request.json.get('ramal', None))
-	ramal = str(request.json.get('departamento', None))
+	departamento = str(request.json.get('departamento', None))
 	created_at = str(request.json.get('created_at', None))
 
 	insertTask.delay(login, vinculo, cargo, siape, cpf, sala, ramal, departamento, created_at)
