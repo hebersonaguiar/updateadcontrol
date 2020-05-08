@@ -70,13 +70,17 @@ def index():
 		connect     = conn()
 
 		try:
-			connect.search('dc={},dc={},dc={}'.format(domain[0], domain[1], domain[2]), '(sAMAccountName={})'.format(usernameForm), attributes = [ 'cn' ], search_scope=SUBTREE )
-			obj  = connect.entries[0].cn.value
-			cn = str(obj)
+			# connect.search('dc={},dc={},dc={}'.format(domain[0], domain[1], domain[2]), '(sAMAccountName={})'.format(usernameForm), attributes = [ 'cn' ], search_scope=SUBTREE )
+			# obj  = connect.entries[0].cn.value
+			# cn = str(obj)
+			connect.search('dc={},dc={},dc={}'.format(domain[0], domain[1], domain[2]), '(sAMAccountName={})'.format(usernameForm), attributes = [ 'distinguishedName' ], search_scope=SUBTREE )
+			obj  = connect.entries[0].distinguishedName.value
+			distinguishedName = str(obj)
 
 			passwordForm = request.form['password']
 			serverAd = 'adserver'
-			userNameConn = 'CN={},OU=SERVICOS,OU=HEPTA,DC=mdh,DC=gov,DC=br'.format(cn)
+			# userNameConn = 'CN={},OU=SERVICOS,OU=HEPTA,DC=mdh,DC=gov,DC=br'.format(cn)
+			userNameConn = distinguishedName
 			# userNameConn = 'CN={},OU=ADM,OU=N3,OU=HEPTA,DC=mdh,DC=gov,DC=br'.format(cn)
 			passwordAdConn = passwordForm
 			serverAdConn      = Server(serverAd, get_info=ALL)
