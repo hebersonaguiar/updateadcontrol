@@ -76,7 +76,8 @@ def index():
 
 			passwordForm = request.form['password']
 			serverAd = 'adserver'
-			userNameConn = 'CN={},OU=ADM,OU=N3,OU=HEPTA,DC=mdh,DC=gov,DC=br'.format(cn)
+			userNameConn = 'CN={},OU=SERVICOS,OU=HEPTA,DC=mdh,DC=gov,DC=br'.format(cn)
+			# userNameConn = 'CN={},OU=ADM,OU=N3,OU=HEPTA,DC=mdh,DC=gov,DC=br'.format(cn)
 			passwordAdConn = passwordForm
 			serverAdConn      = Server(serverAd, get_info=ALL)
 			connAd        = Connection(serverAdConn, user=userNameConn, password=passwordAdConn)
