@@ -211,7 +211,7 @@ def download():
         w = csv.writer(data, delimiter=';')
 
         # write header
-        w.writerow(('Id', 'Login', 'Vinculo', 'Cargo', 'Siape', 'Cpf', 'Sala', 'Ramal', 'Atualizado Em'))
+        w.writerow(('Id', 'Login', 'Vinculo', 'Cargo', 'Siape', 'Cpf', 'Local de Trabalho', 'Ramal', 'Departamento', 'Atualizado Em'))
         yield data.getvalue()
         data.seek(0)
         data.truncate(0)
@@ -233,7 +233,8 @@ def download():
                 item[5],
                 item[6],
 				item[7],
-                item[8].isoformat()  # format datetime as string
+                item[8],
+				item[9].isoformat()  # format datetime as string
             ))
             yield data.getvalue()
             data.seek(0)
