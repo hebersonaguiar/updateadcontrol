@@ -158,7 +158,7 @@ def insertTask(login, vinculo, cargo, siape, cpf, sala, ramal, celular, data, de
 		if siape == "<not set>":
 			siape = "Não possui"
 		cur = mysql.connection.cursor()
-		cur.execute("INSERT INTO users (login, vinculo, cargo, siape, cpf, sala, ramal, celular, data_aniversario, departamento, created_at) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (login, vinculo, cargo, siape, cpf, sala, ramal, celular, data, departamento, created_at))
+		cur.execute("INSERT INTO users (login, vinculo, cargo, siape, cpf, sala, ramal, celular, data_nascimento, departamento, created_at) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (login, vinculo, cargo, siape, cpf, sala, ramal, celular, data, departamento, created_at))
 		mysql.connection.commit()
 
 		#return jsonify({'login': login}), 200
@@ -218,7 +218,7 @@ def download():
         w = csv.writer(data, delimiter=';')
 
         # write header
-        w.writerow(('Id', 'Login', 'Vinculo', 'Cargo', 'Siape', 'Cpf', 'Local de Trabalho', 'Ramal', 'Departamento', 'Atualizado Em'))
+        w.writerow(('Id', 'Login', 'Vinculo', 'Cargo', 'Siape', 'Cpf', 'Local de Trabalho', 'Telefone Funcional', 'Telefone Celular' , 'Data de Nascimento', 'Departamento', 'Atualizado Em'))
         yield data.getvalue()
         data.seek(0)
         data.truncate(0)
