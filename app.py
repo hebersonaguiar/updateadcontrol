@@ -139,16 +139,18 @@ def insert():
 	sala = str(request.json.get('sala', None))
 	ramal = str(request.json.get('ramal', None))
 	departamento = str(request.json.get('departamento', None))
+	celular = str(request.json.get('celular', None))
+	data = str(request.json.get('data', None))
 	created_at = str(request.json.get('created_at', None))
 
-	insertTask.delay(login, vinculo, cargo, siape, cpf, sala, ramal, departamento, created_at)
+	insertTask.delay(login, vinculo, cargo, siape, cpf, sala, ramal, departamento, celular, data, created_at)
 
 	return 'Celery Executado'
 
 
 
 @celery.task(name='app.insertTask')
-def insertTask(login, vinculo, cargo, siape, cpf, sala, ramal,  departamento, created_at):
+def insertTask(login, vinculo, cargo, siape, cpf, sala, ramal, celular, data, departamento, created_at):
 	# if request.method == 'POST':
 		# flash("Data Inserted Sucessfully")
 
@@ -156,7 +158,7 @@ def insertTask(login, vinculo, cargo, siape, cpf, sala, ramal,  departamento, cr
 		if siape == "<not set>":
 			siape = "Não possui"
 		cur = mysql.connection.cursor()
-		cur.execute("INSERT INTO users (login, vinculo, cargo, siape, cpf, sala, ramal,  departamento, created_at) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)", (login, vinculo, cargo, siape, cpf, sala, ramal,  departamento, created_at))
+		cur.execute("INSERT INTO users (login, vinculo, cargo, siape, cpf, sala, ramal, celular, data_aniversario, departamento, created_at) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (login, vinculo, cargo, siape, cpf, sala, ramal, celular, data, departamento, created_at))
 		mysql.connection.commit()
 
 		#return jsonify({'login': login}), 200
