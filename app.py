@@ -167,7 +167,7 @@ def insertTask(login, vinculo, cargo, siape, cpf, sala, ramal, celular, data, de
 		return 'Usuario Inserido'
 
 	except Exception as e:
-		return e
+		return 'error
 	finally:
 		cur.close()
 
@@ -233,6 +233,7 @@ def download():
 
         # write each data_user_l item
         for item in data_user_l:
+			print(item[0] + item[1] + item[10] + item[11].isoformart())
             w.writerow((
                 item[0],
                 item[1],
