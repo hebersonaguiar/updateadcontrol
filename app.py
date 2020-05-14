@@ -233,7 +233,6 @@ def download():
 
         # write each data_user_l item
         for item in data_user_l:
-			print(item[0] + item[1] + item[10] + item[11].isoformart())
             w.writerow((
                 item[0],
                 item[1],
@@ -246,7 +245,7 @@ def download():
                 item[8],
 				item[9],
 				item[10],
-				item[11].isoformat()  # format datetime as string
+				item[11]
             ))
             yield data.getvalue()
             data.seek(0)
