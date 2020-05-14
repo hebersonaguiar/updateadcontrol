@@ -220,7 +220,7 @@ def download():
         w = csv.writer(data, delimiter=';')
 
         # write header
-        w.writerow(('Id', 'Login', 'Vinculo', 'Cargo', 'Siape', 'Cpf', 'Local de Trabalho', 'Telefone Funcional', 'Telefone Celular' , 'Data de Nascimento', 'Departamento', 'Atualizado Em'))
+        w.writerow(('Id', 'Login', 'Vinculo', 'Cargo', 'SIAPE/MATR', 'CPF', 'Localização', 'Telefone Funcional', 'Telefone Celular' , 'Data de Nascimento', 'Lotação', 'Atualizado Em'))
         yield data.getvalue()
         data.seek(0)
         data.truncate(0)
