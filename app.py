@@ -244,7 +244,7 @@ def download():
 				item[7],
                 item[8],
 				item[9]
-				item[10]
+				item[10],
 				item[11].isoformat()  # format datetime as string
             ))
             yield data.getvalue()
