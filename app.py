@@ -167,7 +167,7 @@ def insertTask(login, vinculo, cargo, siape, cpf, sala, ramal, celular, data, de
 		return 'Usuario Inserido'
 
 	except Exception as e:
-		return 'error
+		return 'error'
 	finally:
 		cur.close()
 
