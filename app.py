@@ -11,15 +11,12 @@ from werkzeug.datastructures import Headers
 from werkzeug.wrappers import Response
 from ldap3 import *
 from ldap3.core.exceptions import LDAPCursorError
-#from flask_celery import make_celery
 from celery import Celery
-
 
 app = Flask(__name__)
 api = Api(app)
 CORS(app, resources={r"/*": {"origins": "*"}})
 app.secret_key = "flash message"
-
 
 def make_celery(app):
     celery = Celery(app.import_name, backend=app.config['CELERY_BACKEND'],
@@ -70,18 +67,13 @@ def index():
 		connect     = conn()
 
 		try:
-			# connect.search('dc={},dc={},dc={}'.format(domain[0], domain[1], domain[2]), '(sAMAccountName={})'.format(usernameForm), attributes = [ 'cn' ], search_scope=SUBTREE )
-			# obj  = connect.entries[0].cn.value
-			# cn = str(obj)
 			connect.search('dc={},dc={},dc={}'.format(domain[0], domain[1], domain[2]), '(sAMAccountName={})'.format(usernameForm), attributes = [ 'distinguishedName' ], search_scope=SUBTREE )
 			obj  = connect.entries[0].distinguishedName.value
 			distinguishedName = str(obj)
 
 			passwordForm = request.form['password']
 			serverAd = 'adserver'
-			# userNameConn = 'CN={},OU=SERVICOS,OU=HEPTA,DC=mdh,DC=gov,DC=br'.format(cn)
 			userNameConn = distinguishedName
-			# userNameConn = 'CN={},OU=ADM,OU=N3,OU=HEPTA,DC=mdh,DC=gov,DC=br'.format(cn)
 			passwordAdConn = passwordForm
 			serverAdConn      = Server(serverAd, get_info=ALL)
 			connAd        = Connection(serverAdConn, user=userNameConn, password=passwordAdConn)
@@ -100,6 +92,7 @@ def index():
 
 	return render_template('index.html')
 
+# CONSULTA DE USUÁRIO NA BASE DE DADOS E BUSCA NOME DO USUÁRIO LOGADO
 @app.route('/usuarios')
 def usuarios():
 	if g.username:
@@ -127,7 +120,8 @@ def usuarios():
 
 	return redirect(url_for('index'))
 
-	
+
+# RECEBE DADOS DO FORMULÁRIO PARA ENVIO A BASE DE DADOS UTILIZANDO CELERY
 @app.route('/insert', methods=['POST'])
 def insert():
 
@@ -148,12 +142,9 @@ def insert():
 	return 'Celery Executado'
 
 
-
+# INSERI OS DADOS DO USUÁRII NA BASE DE DADOS COM CELERY
 @celery.task(name='app.insertTask')
 def insertTask(login, vinculo, cargo, siape, cpf, sala, ramal, celular, data, departamento, created_at):
-	# if request.method == 'POST':
-		# flash("Data Inserted Sucessfully")
-
 	try:
 		if siape == "<not set>":
 			siape = "Não possui"
@@ -163,7 +154,6 @@ def insertTask(login, vinculo, cargo, siape, cpf, sala, ramal, celular, data, de
 		cur.execute("INSERT INTO users (login, vinculo, cargo, siape, cpf, sala, ramal, celular, data_nascimento, departamento, created_at) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (login, vinculo, cargo, siape, cpf, sala, ramal, celular, data, departamento, created_at))
 		mysql.connection.commit()
 
-		#return jsonify({'login': login}), 200
 		return 'Usuario Inserido'
 
 	except Exception as e:
@@ -171,10 +161,7 @@ def insertTask(login, vinculo, cargo, siape, cpf, sala, ramal, celular, data, de
 	finally:
 		cur.close()
 
-
-		# return redirect(url_for('usuarios'))
-
-
+# DELETA USUÁRIO DA BASE DE DADOS A PARTIR DO ID E TAMBÉM REMOVE A FLAG DE ATUALIZAÇÃO DO USUÁRIO NO AD
 @app.route('/delete/<string:id_data>', methods=['POST', 'GET'])
 def delete(id_data):
 
@@ -183,10 +170,6 @@ def delete(id_data):
 	connect     = conn()
 
 	try:
-		# cur = mysql.connection.cursor()
-		# cur.execute("DELETE FROM users WHERE id = {}".format(id_data))
-		# mysql.connection.commit()
-
 		cur = mysql.connection.cursor()
 		cur.execute("SELECT login FROM users WHERE id = {}".format(id_data))
 		data = cur.fetchone()
@@ -213,6 +196,7 @@ def delete(id_data):
 	finally:
 		cur.close()
 
+# EXPORTA DADOS DA BASE DE DADOS PARA UM CSV
 @app.route('/download', methods=['POST', 'GET'])
 def download():
     def generate():
@@ -261,6 +245,7 @@ def download():
         mimetype='text/csv', headers=headers
     )
 
+# CONSULTA SE O USUÁRIO FOI ATUALIZADO NO AD
 @app.route('/user',methods=['POST'])
 def user():
 
@@ -274,16 +259,6 @@ def user():
 		connect.search('dc={},dc={},dc={}'.format(domain[0], domain[1], domain[2]), '(sAMAccountName={})'.format(login), attributes = [ 'extensionAttribute15' ], search_scope=SUBTREE )
 		obj  = connect.entries[0].extensionAttribute15.value
 		extensionAttribute15 = str(obj)
-
-
-		# cur = mysql.connection.cursor()
-		# cur.execute("SELECT login FROM users WHERE login = '{}'".format(login))
-		# data = cur.fetchone()
-		# data_s = str(data)
-		# chars = ")(,'"
-
-		# for char in chars:
-		# 	data_s = data_s.replace(char, "")
 		
 		if extensionAttribute15 == 'True':
 			return 'True'
@@ -294,7 +269,7 @@ def user():
 		return jsonify(e), 200
 
 
-# REGRA PARA PÁGINA DE LOGOUT
+# REGRAS PARA PÁGINA DE LOGOUT
 @app.route("/logout", methods=['GET','POST'])
 def logout():
 	if 'username' in session:
