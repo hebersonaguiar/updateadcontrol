@@ -29,7 +29,6 @@ if [ ! -z "$AD_SERVER" ] || [ ! -z "$USER_SVC" ] || [ ! -z "$PASS_SVC" ]|| [ ! -
 	sed -i "s/dbmysql/$MYSQL_DB/g" /opt/app.py
 
     /usr/local/bin/python  /opt/app.py & 
-    #/usr/sbin/ntpdate a.ntp.br &
     /etc/init.d/rabbitmq-server start 
     /usr/sbin/rabbitmqctl add_vhost myvhost
     /usr/sbin/rabbitmqctl set_permissions -p myvhost guest ".*" ".*" ".*"    
