@@ -3,7 +3,7 @@ version: '3.1'
 services:
 
   updateadcontrol:
-    image: updateadcontrol:1.2
+    image: updateadcontrol:1.0
     hostname: updateadcontrol
     container_name: updateadcontrol
     environment:
@@ -18,14 +18,3 @@ services:
       - mysql:mysql
     ports:
       - "5000:5000"
-    networks:
-      front:
-        ipv4_address: 172.36.238.20
-
-networks:
-    front:
-        driver: bridge
-        ipam:
-            driver: default
-            config:
-                - subnet: 172.36.238.0/24
